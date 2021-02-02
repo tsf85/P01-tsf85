@@ -6,7 +6,7 @@ from csv import writer
 #import datetime
 #import os
 #from os.path import isfile, join
-#import csv
+import csv
 #import shutil
 #import sqlite3
 
@@ -21,12 +21,11 @@ response1 = requests.get(vasel_url)
 #html1 = response1.read()
 soup1 = BeautifulSoup(response1.text, "html.parser")
 
-games = soup1.find_all(class_='game_thumbnail')
+titles = soup1.find_all(class_='gt_title')
 
-for gt_title in games:
-    titles = soup1.find(class_='gt_title').get_text().replace('\n', '')
-    print(titles)
-    
+for div in titles:
+    game = soup1.find('a').get_text().replace('\n', '')
+print(game)
 
 
     
