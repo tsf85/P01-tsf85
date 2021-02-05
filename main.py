@@ -1,24 +1,13 @@
-#import urllib
-import pathlib
 import requests
 from bs4 import BeautifulSoup
-#import urllib.request, urllib.parse, urllib.error
 from csv import writer
-#import datetime
-#import os
-#from os.path import isfile, join
-import csv
-#import shutil
-#import sqlite3
 
-
-
-
-
+#clears the file of any prior content
 def clear_vasel_list():
     file = open("Vasel_list.txt", "w")
     file.close()
 
+#pulls Tom Vasel's 2021 top 100 boardgames list and writes it to its own file
 def get_vasel_top_list():
     i = 0
    
@@ -42,13 +31,15 @@ def get_vasel_top_list():
                 get_vasel_top_list
 
 
-get_vasel_top_list()
+#get_vasel_top_list()
 #clear_vasel_list()
 
+#clears the file of any prior content
 def clear_quinn_list():
     file = open("Quinn_list.txt", "w")
     file.close()
 
+#pulls Quinn's 2021 top 139 boardgames list and writes it to its own file
 def get_quinn_top_list():
     quinn_url = ('https://www.shutupandsitdown.com/videos/quinns-walks-you-through-his-game-collection/')
     response2 = requests.get(quinn_url)
@@ -65,4 +56,17 @@ def get_quinn_top_list():
 
 #get_quinn_top_list()
 #clear_quinn_list()
- 
+
+#merges items in common from input files into seperate file 
+def merge_top_lists(source_file1, source_file2, merged_file):
+    with open(source_file1, 'r') as file1:
+        with open(source_file2, 'r') as file2:
+            same = set(file1).intersection(file2)
+
+            #same.discard('\n')
+
+    with open(merged_file, 'w') as file_out:
+        for line in same:
+            file_out.write(line)
+
+merge_top_lists('Vasel_list.txt', 'Quinn_list.txt', 'Vasel_Quinn_list.txt')
