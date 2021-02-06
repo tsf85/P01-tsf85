@@ -1,0 +1,27 @@
+First, I feel like I should mention that while my status at the school is that of a senior, I've 
+been out of school for years and am very much coming back as a freshman as far as CS goes as I 
+switched majors. 
+
+This whole thing was a struggle, which was very educational. I was originally was going to do something
+with the steam API, but after a couple days of trying to figure that out, I decided it was a bit over
+my head. Then I struggled to understand scraping and all that syntax I would need for that. I feel like
+I spent about 19/20 of my time just researching how to do any single thing I wanted to do and the rest
+actually writing anything.
+
+An issue I was unable to resolve was in the second url I scraped. I wasn't able to figure out how to get
+specific enough to ommit a few pieces of text that weren't boardgame names. After beating my head against
+this for most of a day, I decided it didn't matter since the main function of the script is to find games
+in common between two reviewers, which would leave that irrelevant text alone anyway. Not elegant, but I
+couldn't figure it out yet.
+
+Advice for a future student? start super simple and get more complicated and add ideas as you're figuring
+out the basics.
+
+The most fun part of the assignment was seeing my first bit of actual codex that I wanted to writex actually
+do something. I saw the list of boardgames was stoked.
+
+I'd like to go back and improve the script by adding in more reviewers and resolving the issue with irrelevant
+text. Maybe add in some data analysis for comparing what kind of boardgame genres people like and over-lap on
+with other people.
+
+https://github.com/tsf85/P01-tsf85/blob/main/P01-tsf85-gif.gif
