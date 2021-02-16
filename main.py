@@ -1,6 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 from csv import writer
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+PATH = "C:\Program Files (x86)\chromedriver.exe"
+driver = webdriver.Chrome(PATH)
 
 #clears the file of any prior content
 def clear_vasel_list():
@@ -62,11 +68,37 @@ def merge_top_lists(source_file1, source_file2, merged_file):
     with open(source_file1, 'r') as file1:
         with open(source_file2, 'r') as file2:
             same = set(file1).intersection(file2)
-
+            same.discard('the')
             #same.discard('\n')
 
     with open(merged_file, 'w') as file_out:
         for line in same:
             file_out.write(line)
 
-merge_top_lists('Vasel_list.txt', 'Quinn_list.txt', 'Vasel_Quinn_list.txt')
+#merge_top_lists('Vasel_list.txt', 'Quinn_list.txt', 'Vasel_Quinn_list.txt')
+
+def genre_search(text_file):
+    #file = open(text_file, "r")
+    #line = file.readline()
+    #while line = True:
+        #body = {'q':line}
+        #con = requests.get('https://boardgamegeek.com/advsearch/boardgame', params=body)
+        #print (con.text)
+
+    #body = {'q':text_file}
+    #con = requests.get('https://boardgamegeek.com/advsearch/boardgame', data=body)
+    #print(con.text)
+
+    driver.get('https://boardgamegeek.com/advsearch/boardgame')
+    print(driver.title)
+
+    search = driver.find_element_by_name("q")
+    search.send_keys("kemet")
+    search.send_keys(Keys.RETURN)
+    driver.find_element_by_link_text("Kemet").click()
+
+    time.sleep(5)
+
+    driver.quit()
+
+genre_search("kemet")
